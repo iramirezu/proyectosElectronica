@@ -3,7 +3,11 @@ import time
 import os
 
 # set up the serial line
-ser = serial.Serial('COM4', 9600)
+ser = serial.Serial('/dev/ttyACM0', 9600)
+
+# COM4: windows
+# /dev/ttyACM0: ubuntu
+
 #time.sleep(2)
 
 volumen = 0
@@ -14,13 +18,13 @@ while(True):
     #print(string)
     if string == "FFA857": # subir volumen
         volumen += 5
-        os.system("setvol +3")
+        os.system("./SetVol.exe +3")
         print("subiendo volumen")
         
 
     if string == "FFE01F":
         volumen -= 5
-        os.system("setvol -3")
+        os.system("./SetVol.exe -3")
         print("bajando volumen")
         
 
